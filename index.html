@@ -1,0 +1,1868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Furqan — Python Backend Developer &amp; Full-Stack Developer</title>
+  <meta name="description" content="Portfolio of Furqan, a Computer Science student and independent developer specializing in Python, Django, REST APIs, and AI/RAG systems. Open to internship and junior developer opportunities." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Furqan — Python Backend Developer & Full-Stack Developer" />
+  <meta property="og:description" content="Computer Science student and independent developer building full-stack apps, REST APIs, and AI-powered systems with Python and Django." />
+  <meta property="og:type" content="website" />
+
+  <!-- Favicon: simple monogram, inline so no extra asset is needed -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230F1420'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='16' fill='%23E8A33D' text-anchor='middle'%3EF%3C/text%3E%3C/svg%3E" />
+
+  <!-- Fonts: Space Grotesk (display), Inter (body), JetBrains Mono (code/labels) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Structured data: lets AI tools, crawlers, and search engines read who
+       this site is about directly, instead of inferring it from styled text.
+       Only fields with real, stated information are included — no invented
+       employer, degree, or contact details. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Furqan",
+    "jobTitle": "Python Backend Developer & Full-Stack Developer",
+    "description": "Computer Science (ICS) student and independent developer specializing in Python, Django, REST APIs, and AI/RAG systems. Open to internship and junior developer opportunities.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "Punjab",
+      "addressCountry": "Pakistan"
+    },
+    "knowsAbout": [
+      "Python", "Django", "Django REST Framework", "FastAPI", "REST API Development",
+      "JavaScript", "React", "Vue.js", "PHP",
+      "MySQL", "PostgreSQL", "SQLite", "Database Design",
+      "Retrieval-Augmented Generation", "FAISS", "SentenceTransformers", "TF-IDF Recommendations",
+      "Celery", "Redis", "Linux", "Git", "Docker"
+    ]
+  }
+  </script>
+
+  <style>
+/* =========================================================
+   FURQAN — PORTFOLIO STYLESHEET
+   Structure:
+   1. Reset & base
+   2. Design tokens
+   3. Typography
+   4. Layout helpers
+   5. Buttons & tags
+   6. Header / nav
+   7. Hero
+   8. About
+   9. Skills
+   10. Projects
+   11. Experience
+   12. Education
+   13. Contact
+   14. Footer / back-to-top
+   15. Scroll-reveal & motion
+   16. Responsive
+   ========================================================= */
+
+/* ---------- 1. Reset & base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+ul { list-style: none; margin: 0; padding: 0; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; }
+h1, h2, h3 { font-family: var(--font-display); margin: 0; line-height: 1.15; }
+p { margin: 0 0 1em; }
+p:last-child { margin-bottom: 0; }
+
+/* ---------- 2. Design tokens ---------- */
+:root {
+  /* Colors */
+  --bg-primary: #0F1420;
+  --bg-surface: #161C2C;
+  --bg-surface-alt: #131826;
+  --bg-elevated: #1E2638;
+  --border-subtle: #262F45;
+  --border-strong: #384365;
+
+  --text-primary: #ECEFF6;
+  --text-secondary: #9AA5BD;
+  --text-tertiary: #7E89A3;
+
+  --accent-amber: #E8A33D;
+  --accent-amber-soft: rgba(232, 163, 61, 0.14);
+  --accent-teal: #5FCFC0;
+  --accent-teal-soft: rgba(95, 207, 192, 0.12);
+
+  --status-ok-bg: rgba(90, 200, 140, 0.14);
+  --status-ok-text: #6FD9A0;
+
+  /* Typography */
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Layout */
+  --container-width: 1160px;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  /* Motion */
+  --transition-fast: 150ms ease;
+  --transition-base: 320ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ---------- 3. Typography helpers ---------- */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent-teal);
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  margin: 0 0 0.9em;
+}
+.status {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 0.15em 0.6em;
+  border-radius: 999px;
+  font-weight: 600;
+}
+.status--ok { background: var(--status-ok-bg); color: var(--status-ok-text); }
+
+.section__title {
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  font-weight: 600;
+  margin-bottom: 0.5em;
+}
+.section__subtitle {
+  color: var(--text-secondary);
+  max-width: 52ch;
+  margin-bottom: 2.5rem;
+}
+
+/* ---------- 4. Layout helpers ---------- */
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.section { padding: 6.5rem 0; }
+.section--alt { background: var(--bg-surface-alt); }
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: auto;
+  background: var(--accent-amber);
+  color: #111;
+  padding: 0.8em 1.2em;
+  border-radius: var(--radius-sm);
+  z-index: 999;
+  font-weight: 600;
+}
+.skip-link:focus {
+  left: 24px;
+  top: 24px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-teal);
+  outline-offset: 3px;
+}
+
+/* ---------- 5. Buttons & tags ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  padding: 0.85em 1.6em;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1px solid transparent;
+  transition: transform var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast);
+  white-space: nowrap;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn--primary { background: var(--accent-amber); color: #17140C; }
+.btn--primary:hover { background: #f0b354; }
+.btn--secondary { background: transparent; border-color: var(--border-strong); color: var(--text-primary); }
+.btn--secondary:hover { border-color: var(--accent-teal); color: var(--accent-teal); }
+.btn--ghost { background: transparent; color: var(--text-secondary); }
+.btn--ghost:hover { color: var(--text-primary); }
+.btn--small { padding: 0.55em 1.1em; font-size: 0.85rem; }
+.btn--full { width: 100%; }
+
+.tag-list { display: flex; flex-wrap: wrap; gap: 0.5em; }
+.tag-list li {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  padding: 0.35em 0.75em;
+  border-radius: var(--radius-sm);
+}
+.tag-list--tech li {
+  color: var(--accent-teal);
+  border-color: rgba(95, 207, 192, 0.25);
+  background: var(--accent-teal-soft);
+}
+
+.placeholder-text, .link--placeholder, .placeholder-link {
+  border-bottom: 1px dashed var(--text-tertiary);
+  color: var(--text-tertiary);
+  cursor: help;
+  position: relative;
+}
+.placeholder-text::before, .link--placeholder::before, .placeholder-link::before {
+  content: '\270E';
+  font-size: 0.75em;
+  margin-right: 0.4em;
+  opacity: 0.7;
+}
+.placeholder-text[data-tooltip]:hover::after,
+.link--placeholder[data-tooltip]:hover::after,
+.placeholder-link[data-tooltip]:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 0;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-strong);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  padding: 0.4em 0.7em;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  z-index: 10;
+}
+
+/* ---------- 6. Header / nav ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(15, 20, 32, 0.7);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--transition-base), background var(--transition-base);
+}
+.site-header.is-scrolled {
+  border-bottom-color: var(--border-subtle);
+  background: rgba(15, 20, 32, 0.92);
+}
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+.logo {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.15rem;
+}
+.logo__dot { color: var(--accent-amber); }
+
+.nav__list {
+  display: flex;
+  gap: 2rem;
+}
+.nav__link {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  position: relative;
+  padding: 0.3em 0;
+  transition: color var(--transition-fast);
+}
+.nav__link::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: -2px;
+  width: 0; height: 2px;
+  background: var(--accent-amber);
+  transition: width var(--transition-base);
+}
+.nav__link:hover, .nav__link.is-active { color: var(--text-primary); }
+.nav__link.is-active::after { width: 100%; }
+
+.site-header__actions { display: flex; align-items: center; gap: 1rem; }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 38px;
+  height: 38px;
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0;
+}
+.nav-toggle span {
+  display: block;
+  width: 16px;
+  height: 2px;
+  background: var(--text-primary);
+  margin: 0 auto;
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+.nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ---------- 7. Hero ---------- */
+.hero {
+  position: relative;
+  padding: 7rem 0 6rem;
+  overflow: hidden;
+}
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(var(--border-subtle) 1px, transparent 1px);
+  background-size: 26px 26px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 70% 20%, #000 40%, transparent 90%);
+  mask-image: radial-gradient(ellipse 70% 60% at 70% 20%, #000 40%, transparent 90%);
+  opacity: 0.5;
+  pointer-events: none;
+}
+.hero__inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.hero__title {
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: 700;
+  margin-bottom: 0.35em;
+}
+.highlight { color: var(--accent-amber); }
+.hero__role {
+  font-family: var(--font-mono);
+  color: var(--accent-teal);
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  margin-bottom: 1em;
+}
+.hero__intro {
+  color: var(--text-secondary);
+  max-width: 54ch;
+  margin-bottom: 2em;
+}
+.hero__actions { display: flex; flex-wrap: wrap; gap: 1em; margin-bottom: 2em; }
+.hero__meta {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--text-tertiary);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+}
+.dot-sep { color: var(--border-strong); }
+
+/* Terminal card */
+.terminal {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 30px 60px -20px rgba(0,0,0,0.5);
+}
+.terminal__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.8em 1em;
+  background: var(--bg-elevated);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.dot--red { background: #E0708A; }
+.dot--amber { background: var(--accent-amber); }
+.dot--green { background: var(--status-ok-text); }
+.terminal__title {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-tertiary);
+  margin-left: 0.5em;
+}
+.terminal__body {
+  margin: 0;
+  padding: 1.4em 1.5em 1.8em;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  white-space: pre-wrap;
+  word-break: break-word;
+  min-height: 220px;
+}
+.terminal__cursor {
+  color: var(--accent-amber);
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+/* ---------- 8. About ---------- */
+.about__grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+.about__text p { color: var(--text-secondary); }
+.about__cards { display: flex; flex-direction: column; gap: 1rem; }
+.focus-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.2em 1.4em;
+  transition: border-color var(--transition-fast), transform var(--transition-fast);
+}
+.focus-card:hover { border-color: var(--accent-teal); transform: translateY(-3px); }
+.focus-card__label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--accent-amber);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.5em;
+}
+.focus-card p { font-weight: 500; }
+
+/* ---------- 9. Skills ---------- */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.skill-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.6em;
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+.skill-card:hover { transform: translateY(-4px); border-color: var(--accent-teal); }
+.skill-card__head { display: flex; align-items: center; gap: 0.8em; margin-bottom: 1.1em; }
+.skill-icon {
+  width: 34px; height: 34px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: var(--radius-sm);
+  background: var(--accent-amber-soft);
+  color: var(--accent-amber);
+  flex-shrink: 0;
+}
+.skill-icon svg { width: 18px; height: 18px; }
+.skill-card__head h3 { font-size: 1.02rem; font-weight: 600; }
+
+/* ---------- 10. Projects ---------- */
+.project-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7em;
+  margin-bottom: 2.5rem;
+}
+.filter-btn {
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  padding: 0.5em 1.1em;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  transition: all var(--transition-fast);
+}
+.filter-btn:hover { border-color: var(--accent-teal); color: var(--text-primary); }
+.filter-btn.is-active { background: var(--accent-amber); border-color: var(--accent-amber); color: #17140C; font-weight: 600; }
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.75rem;
+}
+.project-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.8em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  transition: transform var(--transition-fast), border-color var(--transition-fast), opacity var(--transition-base);
+}
+.project-card:hover { transform: translateY(-4px); border-color: var(--border-strong); }
+.project-card.is-hidden { display: none; }
+.project-card__head { display: flex; flex-direction: column; gap: 0.6em; }
+.project-card__head h3 { font-size: 1.2rem; }
+.badge {
+  display: inline-block;
+  align-self: flex-start;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 0.25em 0.7em;
+  border-radius: 999px;
+  font-weight: 600;
+}
+.badge--featured { background: var(--accent-amber-soft); color: var(--accent-amber); }
+.badge--status { background: var(--accent-teal-soft); color: var(--accent-teal); }
+.project-card__desc { color: var(--text-secondary); }
+.feature-list li {
+  position: relative;
+  padding-left: 1.3em;
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  margin-bottom: 0.5em;
+}
+.feature-list li::before {
+  content: '\2713';
+  position: absolute;
+  left: 0;
+  color: var(--accent-teal);
+  font-size: 0.85em;
+}
+.feature-list--two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 1.5em;
+}
+.project-card__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2em;
+  margin-top: auto;
+  padding-top: 0.4em;
+}
+.link { font-size: 0.88rem; font-weight: 600; }
+.link--live { color: var(--accent-teal); }
+.link--live:hover { text-decoration: underline; }
+
+/* ---------- 11. Experience ---------- */
+.experience-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 2.2em;
+}
+.experience-card__head { margin-bottom: 1em; }
+.experience-card__head h3 { font-size: 1.3rem; margin-bottom: 0.3em; }
+.experience-card__subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent-teal);
+}
+.experience-card__desc { color: var(--text-secondary); margin-bottom: 1.4em; }
+
+/* ---------- 12. Education ---------- */
+.timeline { position: relative; padding-left: 2rem; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 5px; top: 6px; bottom: 6px;
+  width: 1px;
+  background: var(--border-strong);
+}
+.timeline__item { position: relative; padding-bottom: 2.2em; }
+.timeline__item:last-child { padding-bottom: 0; }
+.timeline__dot {
+  position: absolute;
+  left: -2rem;
+  top: 5px;
+  width: 11px; height: 11px;
+  border-radius: 50%;
+  background: var(--accent-amber);
+  box-shadow: 0 0 0 4px var(--accent-amber-soft);
+}
+.timeline__content h3 { font-size: 1.1rem; margin-bottom: 0.4em; }
+.timeline__meta {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-tertiary);
+  margin-bottom: 0.6em;
+}
+.timeline__content p:last-child { color: var(--text-secondary); }
+.education-note {
+  margin-top: 2.5rem;
+  color: var(--text-tertiary);
+  font-size: 0.9rem;
+  max-width: 60ch;
+  border-left: 2px solid var(--border-strong);
+  padding-left: 1.2em;
+}
+
+/* ---------- 13. Contact ---------- */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 3rem;
+}
+.contact-info { display: flex; flex-direction: column; gap: 1.3rem; }
+.contact-item { display: flex; flex-direction: column; gap: 0.3em; }
+.contact-item__label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-amber);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.contact-form {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2em;
+}
+.form-row { display: flex; flex-direction: column; gap: 0.5em; }
+.form-row label { font-size: 0.85rem; color: var(--text-secondary); }
+.form-row input, .form-row textarea {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0.8em 1em;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  resize: vertical;
+}
+.form-row input:focus, .form-row textarea:focus {
+  outline: none;
+  border-color: var(--accent-teal);
+}
+.form-note { font-size: 0.78rem; color: var(--text-tertiary); text-align: center; }
+.form-note.is-error { color: #E0708A; }
+
+/* ---------- 14. Footer / back to top ---------- */
+.site-footer { border-top: 1px solid var(--border-subtle); padding: 2.2rem 0; }
+.site-footer__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  color: var(--text-tertiary);
+  font-size: 0.85rem;
+}
+.site-footer__social { display: flex; gap: 0.7em; }
+.social-badge {
+  width: 34px; height: 34px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  transition: border-color var(--transition-fast), color var(--transition-fast);
+}
+.social-badge:hover { border-color: var(--accent-teal); color: var(--accent-teal); }
+.social-badge.placeholder-link::before { content: none; }
+
+.back-to-top {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border-strong);
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all var(--transition-base);
+  z-index: 90;
+}
+.back-to-top.is-visible { opacity: 1; visibility: visible; transform: translateY(0); }
+.back-to-top:hover { border-color: var(--accent-amber); color: var(--accent-amber); }
+
+/* ---------- 15. Scroll reveal & motion ----------
+   IMPORTANT: .reveal elements are plain, fully visible content by default.
+   Nothing in this stylesheet hides them. The script below is the ONLY thing that
+   ever sets them to opacity 0 (via inline style, right before it sets up
+   the IntersectionObserver that fades them back in) — and it does so inside
+   a try/catch with a hard timeout fallback, so content can never get stuck
+   invisible just because a script failed to load or threw an error. */
+.reveal { transition: opacity 0.7s ease, transform 0.7s ease; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { transition: none; }
+  .terminal__cursor { animation: none; }
+  .btn:hover, .focus-card:hover, .skill-card:hover, .project-card:hover { transform: none; }
+}
+
+/* ---------- 16. Responsive ---------- */
+@media (max-width: 1000px) {
+  .hero__inner { grid-template-columns: 1fr; }
+  .hero__panel { order: -1; max-width: 480px; }
+  .about__grid { grid-template-columns: 1fr; }
+  .skills-grid { grid-template-columns: repeat(2, 1fr); }
+  .project-grid { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 780px) {
+  .nav {
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--border-subtle);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--transition-base);
+  }
+  .nav.is-open { max-height: 420px; }
+  .nav__list { flex-direction: column; gap: 0; padding: 0.5rem 24px 1.2rem; }
+  .nav__list li { border-bottom: 1px solid var(--border-subtle); }
+  .nav__list li:last-child { border-bottom: none; }
+  .nav__link { display: block; padding: 0.9em 0; }
+  .nav__link::after { display: none; }
+  .nav-toggle { display: flex; }
+  .site-header__actions .btn--secondary { display: none; }
+
+  .skills-grid { grid-template-columns: 1fr; }
+  .feature-list--two-col { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .section { padding: 4.5rem 0; }
+  .hero { padding: 3rem 0 3.5rem; }
+  .hero__actions { flex-direction: column; align-items: stretch; }
+  .site-footer__inner { flex-direction: column; text-align: center; }
+}
+
+/* =========================================================
+   17. CV / RESUME VIEW
+   Everything here is scoped under #cvView so it can never
+   bleed into the main portfolio's global element styles.
+   ========================================================= */
+:root {
+  --cv-ink: #1B1F27;
+  --cv-ink-soft: #4A5164;
+  --cv-ink-faint: #5A6175;
+  --cv-line: #E3E6EE;
+  --cv-accent: #9C6218;
+  --cv-accent-soft: #FBF1E1;
+  --cv-page-width: 780px;
+}
+
+#cvView {
+  display: none;
+  background: #EDEFF4;
+  color: var(--cv-ink);
+  font-family: 'Inter', system-ui, sans-serif;
+  line-height: 1.55;
+  min-height: 100vh;
+}
+
+#cvView .toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #1B1F27;
+  color: #fff;
+  padding: 0.9rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+#cvView .toolbar a { color: #cfd3dd; text-decoration: none; font-size: 0.9rem; }
+#cvView .toolbar a:hover { color: #fff; }
+#cvView .toolbar__actions { display: flex; align-items: center; gap: 0.9rem; flex-wrap: wrap; }
+#cvView .toolbar__docx {
+  border: 1px solid #454c5e;
+  border-radius: 6px;
+  padding: 0.55em 1.1em;
+  font-weight: 600;
+}
+#cvView .toolbar__docx:hover { border-color: var(--cv-accent); color: var(--cv-accent); }
+#cvView .toolbar button {
+  background: var(--cv-accent);
+  color: #1B1F27;
+  border: none;
+  font-weight: 700;
+  padding: 0.6em 1.3em;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+#cvView .page {
+  max-width: var(--cv-page-width);
+  margin: 2.5rem auto 4rem;
+  background: #fff;
+  padding: 3.2rem 3.4rem;
+  border-radius: 4px;
+  box-shadow: 0 20px 50px -20px rgba(0,0,0,0.25);
+}
+
+#cvView h1, #cvView h2 { font-family: 'Space Grotesk', sans-serif; margin: 0; }
+#cvView h1 { font-size: 1.9rem; }
+#cvView h2 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--cv-accent);
+  border-bottom: 1px solid var(--cv-line);
+  padding-bottom: 0.4em;
+  margin-bottom: 0.9em;
+}
+#cvView p { margin: 0 0 0.6em; }
+
+#cvView .cv-header { margin-bottom: 1.8rem; }
+#cvView .cv-role { color: var(--cv-ink-soft); font-weight: 600; margin-top: 0.2em; }
+#cvView .cv-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em 1.1em;
+  font-size: 0.85rem;
+  color: var(--cv-ink-faint);
+  margin-top: 0.9em;
+}
+#cvView .cv-contact .ph { border-bottom: 1px dashed var(--cv-ink-faint); }
+#cvView .cv-contact strong { color: var(--cv-ink); font-weight: 600; }
+
+#cvView .cv-section { margin-bottom: 1.8rem; page-break-inside: avoid; }
+#cvView .cv-summary { color: var(--cv-ink-soft); }
+
+#cvView .skill-row { display: flex; gap: 0.6em; margin-bottom: 0.5em; font-size: 0.9rem; }
+#cvView .skill-row .label { flex: 0 0 150px; font-weight: 600; color: var(--cv-ink); }
+#cvView .skill-row .value { color: var(--cv-ink-soft); }
+
+#cvView .cv-entry { margin-bottom: 1.3em; page-break-inside: avoid; }
+#cvView .cv-entry:last-child { margin-bottom: 0; }
+#cvView .cv-entry__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1em;
+  flex-wrap: wrap;
+}
+#cvView .cv-entry__title { font-weight: 700; font-size: 1rem; }
+#cvView .cv-entry__meta { font-size: 0.8rem; color: var(--cv-ink-faint); white-space: nowrap; }
+#cvView .cv-entry__tech { font-size: 0.82rem; color: var(--cv-accent); margin: 0.25em 0 0.4em; font-weight: 600; }
+#cvView .cv-entry ul { list-style: disc; list-style-position: outside; margin: 0.4em 0 0; padding-left: 1.2em; }
+#cvView .cv-entry li { font-size: 0.88rem; color: var(--cv-ink-soft); margin-bottom: 0.25em; }
+#cvView .cv-entry li::marker { color: var(--cv-accent); }
+
+#cvView .badge-inline {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--cv-accent);
+  background: var(--cv-accent-soft);
+  padding: 0.15em 0.6em;
+  border-radius: 999px;
+  margin-left: 0.6em;
+  vertical-align: middle;
+}
+
+#cvView .cv-note {
+  font-size: 0.82rem;
+  color: var(--cv-ink-faint);
+  border-left: 2px solid var(--cv-line);
+  padding-left: 0.9em;
+}
+
+/* =========================================================
+   18. CV VIEW TOGGLE (single-file "Download CV" experience)
+   Clicking "Download CV" / "Resume" swaps the visible content
+   to the CV instead of navigating to a second file.
+   ========================================================= */
+body.cv-active { background: #EDEFF4; }
+body.cv-active .site-header,
+body.cv-active #main,
+body.cv-active .site-footer,
+body.cv-active .back-to-top { display: none !important; }
+body.cv-active #cvView { display: block; }
+
+@media print {
+  .site-header, #main, .site-footer, .back-to-top { display: none !important; }
+  #cvView { display: block !important; }
+  #cvView .no-print { display: none !important; }
+  #cvView .page { margin: 0 auto; box-shadow: none; padding: 0; max-width: 100%; }
+  body { background: #fff; }
+  @page { margin: 16mm; }
+}
+
+  </style>
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- ============ HEADER / NAV ============ -->
+  <header class="site-header" id="siteHeader">
+    <div class="container site-header__inner">
+      <a href="#home" class="logo">furqan<span class="logo__dot">.</span>dev</a>
+
+      <nav class="nav" aria-label="Primary">
+        <ul class="nav__list" id="navList">
+          <li><a href="#home" class="nav__link" data-nav="home">Home</a></li>
+          <li><a href="#about" class="nav__link" data-nav="about">About</a></li>
+          <li><a href="#skills" class="nav__link" data-nav="skills">Skills</a></li>
+          <li><a href="#projects" class="nav__link" data-nav="projects">Projects</a></li>
+          <li><a href="#experience" class="nav__link" data-nav="experience">Experience</a></li>
+          <li><a href="#education" class="nav__link" data-nav="education">Education</a></li>
+          <li><a href="#contact" class="nav__link" data-nav="contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-header__actions">
+        <button type="button" class="btn btn--small btn--secondary js-open-cv">Resume</button>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navList">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="home">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="container hero__inner">
+
+        <div class="hero__content">
+          <p class="eyebrow">GET /home <span class="status status--ok">200 OK</span></p>
+          <h1 class="hero__title">Hi, I'm <span class="highlight">Furqan</span></h1>
+          <p class="hero__role">Python Backend Developer &amp; Full-Stack Developer</p>
+          <p class="hero__intro">
+            I'm a Computer Science student and independent developer who builds full-stack web
+            applications and backend systems with Python and Django. My work spans e-commerce
+            platforms, REST APIs, and AI-powered tools built with Retrieval-Augmented Generation —
+            and I'm currently looking for internship or junior developer opportunities.
+          </p>
+
+          <div class="hero__actions">
+            <a href="#projects" class="btn btn--primary">View Projects</a>
+            <button type="button" class="btn btn--secondary js-open-cv">Download CV</button>
+            <a href="#contact" class="btn btn--ghost">Contact Me</a>
+          </div>
+
+          <p class="hero__meta">
+            <span>Punjab, Pakistan</span>
+            <span class="dot-sep">&bull;</span>
+            <span>CS / ICS Student</span>
+            <span class="dot-sep">&bull;</span>
+            <span>Open to internships &amp; junior roles</span>
+          </p>
+        </div>
+
+        <div class="hero__panel reveal">
+          <div class="terminal">
+            <div class="terminal__bar">
+              <span class="dot dot--red"></span>
+              <span class="dot dot--amber"></span>
+              <span class="dot dot--green"></span>
+              <span class="terminal__title">profile.json</span>
+            </div>
+            <pre class="terminal__body"><code id="typedJson"></code><span class="terminal__cursor" id="terminalCursor">&#9615;</span><noscript>{
+  "name": "Furqan",
+  "role": "Python Backend Developer",
+  "focus": ["Django", "REST APIs", "AI/RAG"],
+  "location": "Punjab, Pakistan",
+  "status": "open_to_opportunities"
+}</noscript></pre>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="section" id="about">
+      <div class="container">
+        <p class="eyebrow">GET /about <span class="status status--ok">200 OK</span></p>
+        <h2 class="section__title reveal">About Me</h2>
+
+        <div class="about__grid">
+          <div class="about__text reveal">
+            <p>
+              I'm a Computer Science (ICS) student in Pakistan with a practical, build-first
+              approach to learning software development. Instead of stopping at theory, I've spent
+              my time outside the classroom shipping real applications — from a full e-commerce
+              platform to AI-powered microservices — to understand how backend systems actually
+              behave in production.
+            </p>
+            <p>
+              My core focus is Python and Django: REST APIs, authentication, database design, and
+              backend architecture. Alongside that, I've been exploring AI application
+              development — Retrieval-Augmented Generation, vector search, and recommendation
+              systems — and I enjoy the overlap between solid backend engineering and applied AI.
+            </p>
+            <p>
+              I'm currently looking for an internship, freelance work, or a junior developer role
+              where I can bring this hands-on experience to a team and keep growing as a
+              professional software developer.
+            </p>
+          </div>
+
+          <div class="about__cards reveal">
+            <div class="focus-card">
+              <span class="focus-card__label">Core Focus</span>
+              <p>Python, Django &amp; REST APIs</p>
+            </div>
+            <div class="focus-card">
+              <span class="focus-card__label">Also Exploring</span>
+              <p>AI / RAG Systems &amp; Vector Search</p>
+            </div>
+            <div class="focus-card">
+              <span class="focus-card__label">Looking For</span>
+              <p>Internships &amp; Junior Developer Roles</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SKILLS ============ -->
+    <section class="section section--alt" id="skills">
+      <div class="container">
+        <p class="eyebrow">GET /skills <span class="status status--ok">200 OK</span></p>
+        <h2 class="section__title reveal">Skills &amp; Technologies</h2>
+
+        <div class="skills-grid">
+
+          <div class="skill-card reveal">
+            <div class="skill-card__head">
+              <span class="skill-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M8 6L2 12l6 6M16 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <h3>Languages</h3>
+            </div>
+            <ul class="tag-list">
+              <li>Python</li><li>JavaScript</li><li>PHP</li><li>HTML</li><li>CSS</li><li>SQL</li>
+            </ul>
+          </div>
+
+          <div class="skill-card reveal">
+            <div class="skill-card__head">
+              <span class="skill-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="6" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="3" y="14" width="18" height="6" rx="1.5" stroke="currentColor" stroke-width="1.6"/><circle cx="7" cy="7" r="1" fill="currentColor"/><circle cx="7" cy="17" r="1" fill="currentColor"/></svg>
+              </span>
+              <h3>Backend &amp; Automation</h3>
+            </div>
+            <ul class="tag-list">
+              <li>Django</li><li>Django REST Framework</li><li>FastAPI</li><li>Node.js</li>
+              <li>REST API Development</li><li>Authentication Systems</li><li>CRUD Applications</li>
+              <li>Backend Architecture</li><li>Session-Based Systems</li><li>API Integration</li>
+              <li>Celery</li><li>Redis</li><li>Celery Beat</li><li>Cron Jobs</li>
+              <li>Automated Email Workflows</li><li>Scheduled Background Tasks</li>
+            </ul>
+          </div>
+
+          <div class="skill-card reveal">
+            <div class="skill-card__head">
+              <span class="skill-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="1.5" stroke="currentColor" stroke-width="1.6"/><line x1="3" y1="9" x2="21" y2="9" stroke="currentColor" stroke-width="1.6"/><line x1="9" y1="9" x2="9" y2="20" stroke="currentColor" stroke-width="1.6"/></svg>
+              </span>
+              <h3>Frontend</h3>
+            </div>
+            <ul class="tag-list">
+              <li>HTML5</li><li>CSS3</li><li>JavaScript</li><li>Bootstrap</li><li>Vue.js</li>
+              <li>React</li><li>React Native</li><li>Responsive Design</li>
+            </ul>
+          </div>
+
+          <div class="skill-card reveal">
+            <div class="skill-card__head">
+              <span class="skill-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="5" rx="8" ry="3" stroke="currentColor" stroke-width="1.6"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5" stroke="currentColor" stroke-width="1.6"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3" stroke="currentColor" stroke-width="1.6"/></svg>
+              </span>
+              <h3>Databases</h3>
+            </div>
+            <ul class="tag-list">
+              <li>MySQL</li><li>PostgreSQL</li><li>SQLite</li><li>Database Design</li>
+              <li>SQL</li><li>MySQL Workbench</li><li>phpMyAdmin</li>
+            </ul>
+          </div>
+
+          <div class="skill-card reveal">
+            <div class="skill-card__head">
+              <span class="skill-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><rect x="7" y="7" width="10" height="10" rx="1" stroke="currentColor" stroke-width="1.6"/><rect x="10" y="10" width="4" height="4" stroke="currentColor" stroke-width="1.6"/><line x1="12" y1="2" x2="12" y2="7" stroke="currentColor" stroke-width="1.6"/><line x1="12" y1="17" x2="12" y2="22" stroke="currentColor" stroke-width="1.6"/><line x1="2" y1="12" x2="7" y2="12" stroke="currentColor" stroke-width="1.6"/><line x1="17" y1="12" x2="22" y2="12" stroke="currentColor" stroke-width="1.6"/></svg>
+              </span>
+              <h3>AI / ML &amp; RAG</h3>
+            </div>
+            <ul class="tag-list">
+              <li>Retrieval-Augmented Generation</li><li>FAISS</li><li>SentenceTransformers</li>
+              <li>LLaMA (Local Models)</li><li>TextBlob</li><li>TF-IDF Recommendations</li>
+              <li>AI-Powered Search</li><li>AI Microservices</li>
+            </ul>
+          </div>
+
+          <div class="skill-card reveal">
+            <div class="skill-card__head">
+              <span class="skill-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="1.5" stroke="currentColor" stroke-width="1.6"/><path d="M7 9l3 3-3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><line x1="13" y1="15" x2="17" y2="15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              </span>
+              <h3>Tools &amp; Environment</h3>
+            </div>
+            <ul class="tag-list">
+              <li>Git</li><li>GitHub</li><li>VS Code</li><li>Linux</li><li>Ubuntu</li><li>NPM</li>
+              <li>pip</li><li>Conda</li><li>pyenv</li><li>Docker (Basics)</li><li>LAMP Stack</li>
+              <li>ComfyUI</li><li>Kohya</li><li>Stable Diffusion</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <section class="section" id="projects">
+      <div class="container">
+        <p class="eyebrow">GET /projects <span class="status status--ok">200 OK</span></p>
+        <h2 class="section__title reveal">Featured Projects</h2>
+
+        <div class="project-filters reveal" role="tablist" aria-label="Filter projects">
+          <button class="filter-btn is-active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="featured">Featured</button>
+          <button class="filter-btn" data-filter="ai">AI &amp; ML</button>
+          <button class="filter-btn" data-filter="fullstack">Full-Stack</button>
+        </div>
+
+        <div class="project-grid">
+
+          <!-- Project 1: Lumi-So -->
+          <article class="project-card reveal" data-category="featured ai fullstack">
+            <div class="project-card__head">
+              <span class="badge badge--featured">Featured Project</span>
+              <h3>Lumi-So E-Commerce Platform</h3>
+            </div>
+            <p class="project-card__desc">
+              A full-stack e-commerce platform built with Django, covering everything from product
+              catalogs and cart logic to AI-powered recommendations and automated order emails.
+            </p>
+            <ul class="feature-list">
+              <li>Product management, categories &amp; galleries with image magnifier</li>
+              <li>Session-based cart, wishlist &amp; full checkout flow</li>
+              <li>Order management with reviews and sentiment analysis</li>
+              <li>AI-powered related-product recommendations (TF-IDF)</li>
+              <li>Search, filtering, pagination &amp; dark/light theme switcher</li>
+              <li>Cart recovery &amp; order confirmation emails via Celery + Redis</li>
+              <li>Scheduled background tasks with Celery Beat</li>
+              <li>JazzCash payment integration</li>
+            </ul>
+            <ul class="tag-list tag-list--tech">
+              <li>Python</li><li>Django</li><li>DRF</li><li>SQLite</li><li>JavaScript</li>
+              <li>Bootstrap</li><li>Celery</li><li>Redis</li><li>TextBlob</li><li>TF-IDF</li>
+            </ul>
+            <div class="project-card__links">
+              <a href="#" class="link link--placeholder" data-tooltip="Add your GitHub repository link">GitHub repo <span aria-hidden="true">&#8599;</span></a>
+              <a href="https://veromenhub.com" target="_blank" rel="noopener" class="link link--live">Live Demo <span aria-hidden="true">&#8599;</span></a>
+            </div>
+          </article>
+
+          <!-- Project 2: RAG AI Microservice -->
+          <article class="project-card reveal" data-category="ai">
+            <div class="project-card__head">
+              <h3>RAG AI Microservice</h3>
+            </div>
+            <p class="project-card__desc">
+              An AI-powered Retrieval-Augmented Generation microservice built as an independent
+              FastAPI service, combining vector search with a locally-hosted LLaMA model.
+            </p>
+            <ul class="feature-list">
+              <li>FastAPI microservice architecture</li>
+              <li>Vector database / search using FAISS</li>
+              <li>Text embeddings via SentenceTransformers</li>
+              <li>Local LLaMA model integration for generation</li>
+              <li>Retrieval-based context search pipeline</li>
+            </ul>
+            <ul class="tag-list tag-list--tech">
+              <li>Python</li><li>FastAPI</li><li>FAISS</li><li>SentenceTransformers</li><li>LLaMA</li>
+            </ul>
+            <div class="project-card__links">
+              <a href="#" class="link link--placeholder" data-tooltip="Add your GitHub repository link">GitHub repo <span aria-hidden="true">&#8599;</span></a>
+            </div>
+          </article>
+
+          <!-- Project 3: Medical Application MVP -->
+          <article class="project-card reveal" data-category="fullstack">
+            <div class="project-card__head">
+              <h3>Medical Application MVP</h3>
+            </div>
+            <p class="project-card__desc">
+              A role-based medical application MVP with a Django REST Framework backend and a
+              React frontend, demonstrating full-stack application development end to end.
+            </p>
+            <ul class="feature-list">
+              <li>Role-based functionality for different user types</li>
+              <li>Django admin customized with Jazzmin</li>
+              <li>REST API backend consumed by a React frontend</li>
+              <li>PostgreSQL-backed data layer</li>
+            </ul>
+            <ul class="tag-list tag-list--tech">
+              <li>Django</li><li>DRF</li><li>React</li><li>PostgreSQL</li><li>Jazzmin</li>
+            </ul>
+            <div class="project-card__links">
+              <a href="#" class="link link--placeholder" data-tooltip="Add your GitHub repository link">GitHub repo <span aria-hidden="true">&#8599;</span></a>
+            </div>
+          </article>
+
+          <!-- Project 4: Tutoring Platform -->
+          <article class="project-card reveal" data-category="fullstack">
+            <div class="project-card__head">
+              <span class="badge badge--status">In Development</span>
+              <h3>Tutoring Platform</h3>
+            </div>
+            <p class="project-card__desc">
+              A multi-role tutoring platform concept connecting students, tutors, and parents,
+              designed around a database-driven backend and planned payment integration.
+            </p>
+            <ul class="feature-list">
+              <li>Separate roles for students, tutors &amp; parents</li>
+              <li>Database-driven platform architecture</li>
+              <li>Backend APIs for scheduling &amp; user management</li>
+              <li>Planned JazzCash payment integration</li>
+            </ul>
+            <ul class="tag-list tag-list--tech">
+              <li>Django</li><li>REST APIs</li><li>SQL</li>
+            </ul>
+            <div class="project-card__links">
+              <a href="#" class="link link--placeholder" data-tooltip="Add your GitHub repository link">GitHub repo <span aria-hidden="true">&#8599;</span></a>
+            </div>
+          </article>
+
+          <!-- Project 5: Nerdy Posts -->
+          <article class="project-card reveal" data-category="fullstack">
+            <div class="project-card__head">
+              <h3>Nerdy Posts</h3>
+            </div>
+            <p class="project-card__desc">
+              A Django-based blog application with full authentication and CRUD functionality for
+              creating, editing, and managing posts.
+            </p>
+            <ul class="feature-list">
+              <li>User authentication &amp; account management</li>
+              <li>Full CRUD functionality for blog posts</li>
+              <li>Database-backed content storage</li>
+            </ul>
+            <ul class="tag-list tag-list--tech">
+              <li>Python</li><li>Django</li><li>HTML</li><li>CSS</li><li>JavaScript</li><li>SQLite</li>
+            </ul>
+            <div class="project-card__links">
+              <a href="#" class="link link--placeholder" data-tooltip="Add your GitHub repository link">GitHub repo <span aria-hidden="true">&#8599;</span></a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EXPERIENCE ============ -->
+    <section class="section section--alt" id="experience">
+      <div class="container">
+        <p class="eyebrow">GET /experience <span class="status status--ok">200 OK</span></p>
+        <h2 class="section__title reveal">Experience</h2>
+
+        <div class="experience-card reveal">
+          <div class="experience-card__head">
+            <div>
+              <h3>Independent Software Developer</h3>
+              <p class="experience-card__subtitle">Personal Projects &middot; Self-Directed &middot; Ongoing</p>
+            </div>
+          </div>
+          <p class="experience-card__desc">
+            I've developed multiple practical software projects independently while building my
+            skills as a Computer Science student. This isn't formal employment — it's hands-on,
+            self-directed work building real, working systems.
+          </p>
+          <ul class="feature-list feature-list--two-col">
+            <li>Building full-stack Django applications</li>
+            <li>Developing REST APIs</li>
+            <li>Designing database-driven applications</li>
+            <li>Creating AI-powered backend systems</li>
+            <li>Working with microservice architecture</li>
+            <li>Integrating payment systems (JazzCash)</li>
+            <li>Implementing authentication &amp; user roles</li>
+            <li>Building e-commerce functionality</li>
+            <li>Automating background processes (Celery, Redis)</li>
+            <li>Working with Linux &amp; Ubuntu environments</li>
+            <li>Using Git &amp; GitHub for version control</li>
+            <li>Deploying &amp; hosting web applications</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EDUCATION ============ -->
+    <section class="section" id="education">
+      <div class="container">
+        <p class="eyebrow">GET /education <span class="status status--ok">200 OK</span></p>
+        <h2 class="section__title reveal">Education</h2>
+
+        <div class="timeline reveal">
+          <div class="timeline__item">
+            <span class="timeline__dot"></span>
+            <div class="timeline__content">
+              <h3>Intermediate in Computer Science (ICS)</h3>
+              <p class="timeline__meta">
+                <span class="placeholder-text" data-tooltip="Add your institution name">Unique College for boys</span>
+                &middot; Pakistan &middot;
+                <span class="placeholder-text" data-tooltip="Add years attended">2024-2026</span>
+              </p>
+              <p>Currently completing Intermediate studies with a focus on Computer Science.</p>
+            </div>
+          </div>
+          <div class="timeline__item">
+            <span class="timeline__dot"></span>
+            <div class="timeline__content">
+              <h3>Matriculation</h3>
+              <p class="timeline__meta">
+                <span class="placeholder-text" data-tooltip="Add your institution name">Unique High School for boys</span>
+                &middot; Pakistan &middot;
+                <span class="placeholder-text" data-tooltip="Add years attended">2022-2024</span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <p class="education-note">
+          I don't hold a university degree yet — my current academic focus is Intermediate in
+          Computer Science, alongside independent, self-directed software development.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section section--alt" id="contact">
+      <div class="container">
+        <p class="eyebrow">POST /contact <span class="status status--ok">201 Created</span></p>
+        <h2 class="section__title reveal">Get In Touch</h2>
+        <p class="section__subtitle reveal">
+          Open to internships, freelance work, and junior developer roles. Feel free to reach out.
+        </p>
+
+        <div class="contact-grid">
+
+          <div class="contact-info reveal">
+            <div class="contact-item">
+              <span class="contact-item__label">Email</span>
+              <span class="placeholder-text" data-tooltip="Add your email address">furqanhafeez312@gmail.com</span>
+            </div>
+            <div class="contact-item">
+              <span class="contact-item__label">Whatsapp</span>
+              <span class="placeholder-text" data-tooltip="Add your phone number">+92 309-9648932</span>
+            </div>
+            <div class="contact-item">               
+              <span class="contact-item__label">GitHub</span>
+              <span>
+                  <a href="https://github.com/furqann76" target="_blank" rel="noopener noreferrer" class="placeholder-text" title="Visit my GitHub profile"> github.com/furqann76 </a>
+              </span>
+            </div>
+          </div>
+
+          <form class="contact-form reveal" id="contactForm" novalidate>
+            <div class="form-row">
+              <label for="cf-name">Name</label>
+              <input type="text" id="cf-name" name="name" placeholder="Your name" required />
+            </div>
+            <div class="form-row">
+              <label for="cf-email">Your Email</label>
+              <input type="email" id="cf-email" name="email" placeholder="you@example.com" required />
+            </div>
+            <div class="form-row">
+              <label for="cf-message">Message</label>
+              <textarea id="cf-message" name="message" rows="4" placeholder="What would you like to talk about?" required></textarea>
+            </div>
+            <button type="submit" class="btn btn--primary btn--full">Send Message</button>
+            <p class="form-note" id="formNote">This opens your email app with the message pre-filled.</p>
+          </form>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <p>&copy; <span id="year"></span> Furqan. Built with HTML, CSS &amp; JavaScript.</p>
+      <div class="site-footer__social">
+        <a href="https://github.com/furqann76" class="social-badge placeholder-link" data-tooltip="https://github.com/furqann76" aria-label="GitHub">GH</a>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">&uarr;</button>
+
+  <!-- ============ CV / RESUME VIEW ============
+       Hidden by default; shown in place of the portfolio when
+       "Download CV" / "Resume" is clicked, and printed directly
+       when "Print / Save as PDF" is used. -->
+  <div id="cvView">
+
+    <div class="toolbar no-print">
+      <a href="#" id="cvBackBtn">&larr; Back to portfolio</a>
+      <div class="toolbar__actions">
+        <a class="toolbar__docx"
+           href="data:application/vnd.openxmlformats-officedocument.wordprocessingml.document;base64,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"
+           download="Furqan-Resume.docx">Download .docx</a>
+        <button type="button" id="cvPrintBtn">Print / Save as PDF</button>
+      </div>
+    </div>
+
+    <main class="page">
+
+      <header class="cv-header">
+        <h1>Furqan</h1>
+        <p class="cv-role">Python Backend Developer &amp; Full-Stack Developer</p>
+        <div class="cv-contact">
+          <span><strong>Email:</strong> <span class="ph" title="Add your email address">furqanhafeez312@gmail.com</span></span>
+          <span><strong>Whatsapp:</strong> <span class="ph" title="Add your phone number">+92 309-9648932</span></span>
+          <span>
+            <strong>GitHub:</strong>
+              <a href="https://github.com/furqann76" target="_blank" rel="noopener noreferrer" class="ph" title="Visit my GitHub profile"> github.com/furqann76 </a>
+          </span>
+          <span><strong>Location:</strong> Punjab, Pakistan</span>
+        </div>
+      </header>
+
+      <section class="cv-section">
+        <h2>Summary</h2>
+        <p class="cv-summary">
+          Computer Science (ICS) student and independent developer with practical experience
+          building full-stack web applications and backend systems using Python, Django, and
+          Django REST Framework, including REST API development, database design with MySQL and
+          PostgreSQL, and AI-powered tools built with Retrieval-Augmented Generation (RAG).
+          Comfortable working with Git, Linux, and background task systems like Celery and Redis.
+          Looking for an internship, freelance work, or junior developer role to keep growing as a
+          professional software developer.
+        </p>
+      </section>
+
+      <section class="cv-section">
+        <h2>Skills</h2>
+        <div class="skill-row"><span class="label">Languages</span><span class="value">Python, JavaScript, PHP, HTML, CSS, SQL</span></div>
+        <div class="skill-row"><span class="label">Backend</span><span class="value">Django, Django REST Framework, FastAPI, Node.js, REST APIs, authentication, Celery, Redis, Celery Beat, cron jobs</span></div>
+        <div class="skill-row"><span class="label">Frontend</span><span class="value">HTML5, CSS3, JavaScript, Bootstrap, Vue.js, React, React Native, responsive design</span></div>
+        <div class="skill-row"><span class="label">Databases</span><span class="value">MySQL, PostgreSQL, SQLite, database design, MySQL Workbench, phpMyAdmin</span></div>
+        <div class="skill-row"><span class="label">AI / ML</span><span class="value">RAG, FAISS, SentenceTransformers, local LLaMA models, TextBlob, TF-IDF recommendations</span></div>
+        <div class="skill-row"><span class="label">Tools</span><span class="value">Git, GitHub, VS Code, Linux, Ubuntu, npm, pip, Conda, pyenv, Docker basics, LAMP stack</span></div>
+      </section>
+
+      <section class="cv-section">
+        <h2>Experience</h2>
+        <div class="cv-entry">
+          <div class="cv-entry__head">
+            <span class="cv-entry__title">Independent Software Developer</span>
+            <span class="cv-entry__meta">Personal Projects, Self-Directed, Ongoing</span>
+          </div>
+          <ul>
+            <li>Built full-stack Django applications with REST APIs and database-driven architecture</li>
+            <li>Created AI-powered backend systems and integrated microservice architecture</li>
+            <li>Implemented authentication, role-based access, and e-commerce functionality</li>
+            <li>Automated background workflows using Celery and Redis; integrated JazzCash payments</li>
+            <li>Worked in Linux/Ubuntu environments with Git &amp; GitHub for version control</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="cv-section">
+        <h2>Projects</h2>
+
+        <div class="cv-entry">
+          <div class="cv-entry__head">
+            <span class="cv-entry__title">Lumi-So E-Commerce Platform <span class="badge-inline">Featured</span></span>
+          </div>
+          <p class="cv-entry__tech">Python, Django, DRF, SQLite, Celery, Redis, TF-IDF</p>
+          <ul>
+            <li>Full-stack e-commerce platform: cart, wishlist, checkout, order management &amp; reviews</li>
+            <li>AI-powered product recommendations (TF-IDF) and review sentiment analysis (TextBlob)</li>
+            <li>Automated cart-recovery and order-confirmation emails via Celery Beat &amp; Redis</li>
+            <li>JazzCash payment integration</li>
+          </ul>
+        </div>
+
+        <div class="cv-entry">
+          <div class="cv-entry__head"><span class="cv-entry__title">RAG AI Microservice</span></div>
+          <p class="cv-entry__tech">Python, FastAPI, FAISS, SentenceTransformers, LLaMA</p>
+          <ul>
+            <li>FastAPI microservice combining vector search (FAISS) with a local LLaMA model for retrieval-augmented generation</li>
+          </ul>
+        </div>
+
+        <div class="cv-entry">
+          <div class="cv-entry__head"><span class="cv-entry__title">Medical Application MVP</span></div>
+          <p class="cv-entry__tech">Django, DRF, React, PostgreSQL, Jazzmin</p>
+          <ul>
+            <li>Role-based full-stack MVP with a Django REST API backend and React frontend</li>
+          </ul>
+        </div>
+
+        <div class="cv-entry">
+          <div class="cv-entry__head"><span class="cv-entry__title">Tutoring Platform <span class="badge-inline">In Development</span></span></div>
+          <p class="cv-entry__tech">Django, REST APIs, SQL</p>
+          <ul>
+            <li>Multi-role platform concept for students, tutors &amp; parents with planned JazzCash integration</li>
+          </ul>
+        </div>
+
+        <div class="cv-entry">
+          <div class="cv-entry__head"><span class="cv-entry__title">Nerdy Posts</span></div>
+          <p class="cv-entry__tech">Python, Django, SQLite</p>
+          <ul>
+            <li>Django blog application with authentication and full CRUD functionality</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="cv-section">
+        <h2>Education</h2>
+        <div class="cv-entry">
+          <div class="cv-entry__head">
+            <span class="cv-entry__title">Intermediate in Computer Science (ICS)</span>
+            <span class="cv-entry__meta ph" title="Add years attended">2024-2026</span>
+          </div>
+          <p class="cv-entry__tech ph" title="Add your institution name">Unique College for boys, Pakistan</p>
+        </div>
+        <div class="cv-entry">
+          <div class="cv-entry__head">
+            <span class="cv-entry__title">Matriculation</span>
+            <span class="cv-entry__meta ph" title="Add years attended">2022-2024</span>
+          </div>
+          <p class="cv-entry__tech ph" title="Add your institution name">Unique High School for boys, Pakistan</p>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script>
+/* =========================================================
+   FURQAN — PORTFOLIO SCRIPT
+   Vanilla JavaScript only. No frameworks, no dependencies.
+
+   Every feature below is wrapped in its own try/catch via the
+   safeInit() helper. This means if one feature ever throws an
+   error (bad selector, missing element, browser quirk, etc.)
+   it cannot block the features listed after it — a lesson from
+   an earlier version where a single early failure left large
+   parts of the page's content stuck invisible.
+   ========================================================= */
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  const safeInit = (label, fn) => {
+    try {
+      fn();
+    } catch (err) {
+      console.error(`[portfolio] "${label}" failed to initialize:`, err);
+    }
+  };
+
+  /* ---------------------------------------------------------
+     CONFIG
+     TODO: Replace this placeholder with your real email address.
+     It is used to build the "Send Message" mailto link below.
+  --------------------------------------------------------- */
+  const CONTACT_EMAIL = 'furqanhafeez312@gmail.com';
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------------------------------------------------------
+     1. Sticky header shadow on scroll
+  --------------------------------------------------------- */
+  safeInit('sticky header', () => {
+    const siteHeader = document.getElementById('siteHeader');
+    if (!siteHeader) return;
+    const onScrollHeader = () => siteHeader.classList.toggle('is-scrolled', window.scrollY > 12);
+    onScrollHeader();
+    window.addEventListener('scroll', onScrollHeader, { passive: true });
+  });
+
+  /* ---------------------------------------------------------
+     2. Mobile navigation toggle
+  --------------------------------------------------------- */
+  safeInit('mobile nav toggle', () => {
+    const navToggle = document.getElementById('navToggle');
+    const navList = document.getElementById('navList');
+    if (!navToggle || !navList) return;
+    const nav = navList.closest('.nav');
+    if (!nav) return;
+
+    navToggle.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('is-open');
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    navList.querySelectorAll('.nav__link').forEach((link) => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('is-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  });
+
+  /* ---------------------------------------------------------
+     3. Scroll-spy: highlight the active nav link
+  --------------------------------------------------------- */
+  safeInit('scroll spy', () => {
+    const sections = document.querySelectorAll('main section[id]');
+    const navLinks = document.querySelectorAll('.nav__link');
+    if (!sections.length || !navLinks.length) return;
+
+    const spyObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            navLinks.forEach((link) => link.classList.toggle('is-active', link.dataset.nav === id));
+          }
+        });
+      },
+      { rootMargin: '-45% 0px -50% 0px', threshold: 0 }
+    );
+    sections.forEach((section) => spyObserver.observe(section));
+  });
+
+  /* ---------------------------------------------------------
+     4. Scroll-reveal animations
+     Content is plain and visible in the HTML/CSS by default.
+     This only ever ADDS a fade/slide-in effect on top — and it
+     guarantees a plain visible fallback via both the catch block
+     and a hard timeout, so nothing can stay hidden forever.
+  --------------------------------------------------------- */
+  safeInit('scroll reveal', () => {
+    const revealEls = document.querySelectorAll('.reveal');
+    if (!revealEls.length) return;
+
+    const showAllInstantly = () => {
+      revealEls.forEach((el) => {
+        el.style.transition = 'none';
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      });
+    };
+
+    if (prefersReducedMotion) {
+      showAllInstantly();
+      return;
+    }
+
+    try {
+      revealEls.forEach((el) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(24px)';
+      });
+
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = '1';
+              entry.target.style.transform = 'translateY(0)';
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15 }
+      );
+      revealEls.forEach((el) => revealObserver.observe(el));
+
+      // Safety net: if anything about the observer setup misbehaves in a
+      // particular browser/environment, force everything visible anyway.
+      window.setTimeout(showAllInstantly, 2500);
+    } catch (err) {
+      showAllInstantly();
+    }
+  });
+
+  /* ---------------------------------------------------------
+     5. Hero terminal — typed JSON effect
+  --------------------------------------------------------- */
+  safeInit('typed terminal', () => {
+    const typedJsonEl = document.getElementById('typedJson');
+    if (!typedJsonEl) return;
+    const cursorEl = document.getElementById('terminalCursor');
+
+    const profileJson = `{
+  "name": "Furqan",
+  "role": "Python Backend Developer",
+  "focus": ["Django", "REST APIs", "AI/RAG"],
+  "location": "Punjab, Pakistan",
+  "status": "open_to_opportunities"
+}`;
+
+    if (prefersReducedMotion) {
+      typedJsonEl.textContent = profileJson;
+      return;
+    }
+
+    let i = 0;
+    const typeSpeed = 14; // ms per character
+    const typeNext = () => {
+      if (i < profileJson.length) {
+        typedJsonEl.textContent += profileJson.charAt(i);
+        i += 1;
+        window.setTimeout(typeNext, typeSpeed);
+      } else if (cursorEl) {
+        cursorEl.style.marginLeft = '2px';
+      }
+    };
+    window.setTimeout(typeNext, 500);
+
+    // Safety net: guarantee the full JSON is showing even if the typing
+    // loop above is ever interrupted for some reason.
+    window.setTimeout(() => {
+      if (typedJsonEl.textContent !== profileJson) {
+        typedJsonEl.textContent = profileJson;
+      }
+    }, 3000);
+  });
+
+  /* ---------------------------------------------------------
+     6. Project filtering
+  --------------------------------------------------------- */
+  safeInit('project filters', () => {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+    if (!filterButtons.length || !projectCards.length) return;
+
+    filterButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach((b) => b.classList.remove('is-active'));
+        btn.classList.add('is-active');
+
+        const filter = btn.dataset.filter;
+        projectCards.forEach((card) => {
+          const categories = card.dataset.category || '';
+          const matches = filter === 'all' || categories.includes(filter);
+          card.classList.toggle('is-hidden', !matches);
+        });
+      });
+    });
+  });
+
+  /* ---------------------------------------------------------
+     7. Contact form — builds a mailto: link
+  --------------------------------------------------------- */
+  safeInit('contact form', () => {
+    const contactForm = document.getElementById('contactForm');
+    const formNote = document.getElementById('formNote');
+    if (!contactForm) return;
+
+    contactForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const name = contactForm.name.value.trim();
+      const email = contactForm.email.value.trim();
+      const message = contactForm.message.value.trim();
+
+      if (!name || !email || !message) {
+        if (formNote) {
+          formNote.textContent = 'Please fill in every field before sending.';
+          formNote.classList.add('is-error');
+        }
+        return;
+      }
+
+      const subject = encodeURIComponent(`Portfolio contact from ${name}`);
+      const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
+      window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+
+      if (formNote) {
+        formNote.classList.remove('is-error');
+        formNote.textContent = 'Opening your email app…';
+      }
+    });
+  });
+
+  /* ---------------------------------------------------------
+     8. Back-to-top button
+  --------------------------------------------------------- */
+  safeInit('back to top', () => {
+    const backToTop = document.getElementById('backToTop');
+    if (!backToTop) return;
+
+    const onScrollBackToTop = () => backToTop.classList.toggle('is-visible', window.scrollY > 500);
+    onScrollBackToTop();
+    window.addEventListener('scroll', onScrollBackToTop, { passive: true });
+
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+    });
+  });
+
+  /* ---------------------------------------------------------
+     9. Footer year
+  --------------------------------------------------------- */
+  safeInit('footer year', () => {
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+  });
+
+  /* ---------------------------------------------------------
+     10. CV view toggle
+     "Download CV" / "Resume" swap the visible content to a
+     print-friendly CV instead of opening a second file.
+  --------------------------------------------------------- */
+  safeInit('cv view toggle', () => {
+    const cvBackBtn = document.getElementById('cvBackBtn');
+    const cvPrintBtn = document.getElementById('cvPrintBtn');
+    const openCvButtons = document.querySelectorAll('.js-open-cv');
+    if (!openCvButtons.length) return;
+
+    const showCvView = () => {
+      document.body.classList.add('cv-active');
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    };
+    const hideCvView = () => {
+      document.body.classList.remove('cv-active');
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    };
+
+    openCvButtons.forEach((btn) => btn.addEventListener('click', showCvView));
+
+    if (cvBackBtn) {
+      cvBackBtn.addEventListener('click', (event) => {
+        event.preventDefault();
+        hideCvView();
+      });
+    }
+    if (cvPrintBtn) {
+      cvPrintBtn.addEventListener('click', () => window.print());
+    }
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && document.body.classList.contains('cv-active')) {
+        hideCvView();
+      }
+    });
+  });
+
+});
+
+  </script>
+</body>
+</html>

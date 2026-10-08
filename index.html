@@ -554,6 +554,42 @@ p:last-child { margin-bottom: 0; }
 .link--live { color: var(--accent-teal); }
 .link--live:hover { text-decoration: underline; }
 
+/* Project demo videos */
+.demo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.75rem;
+}
+.demo-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: border-color var(--transition-fast), opacity var(--transition-base);
+}
+.demo-card:hover { border-color: var(--border-strong); }
+.demo-card__media {
+  aspect-ratio: 16 / 9;
+  background: var(--bg-primary);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.demo-card__media video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #000;
+}
+.demo-card__body {
+  padding: 1.5em 1.8em 1.8em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9em;
+}
+.demo-card__body h3 { font-size: 1.15rem; }
+
 /* ---------- 11. Experience ---------- */
 .experience-card {
   background: var(--bg-surface);
@@ -710,10 +746,12 @@ p:last-child { margin-bottom: 0; }
   .about__grid { grid-template-columns: 1fr; }
   .skills-grid { grid-template-columns: repeat(2, 1fr); }
   .project-grid { grid-template-columns: 1fr; }
+  .demo-grid { grid-template-columns: 1fr; }
+  .nav__list { gap: 1.25rem; }
   .contact-grid { grid-template-columns: 1fr; }
 }
 
-@media (max-width: 780px) {
+@media (max-width: 900px) {
   .nav {
     position: absolute;
     top: 72px;
@@ -725,7 +763,7 @@ p:last-child { margin-bottom: 0; }
     overflow: hidden;
     transition: max-height var(--transition-base);
   }
-  .nav.is-open { max-height: 420px; }
+  .nav.is-open { max-height: 480px; }
   .nav__list { flex-direction: column; gap: 0; padding: 0.5rem 24px 1.2rem; }
   .nav__list li { border-bottom: 1px solid var(--border-subtle); }
   .nav__list li:last-child { border-bottom: none; }
@@ -943,6 +981,7 @@ body.cv-active #cvView { display: block; }
           <li><a href="#about" class="nav__link" data-nav="about">About</a></li>
           <li><a href="#skills" class="nav__link" data-nav="skills">Skills</a></li>
           <li><a href="#projects" class="nav__link" data-nav="projects">Projects</a></li>
+          <li><a href="#demos" class="nav__link" data-nav="demos">Demos</a></li>
           <li><a href="#experience" class="nav__link" data-nav="experience">Experience</a></li>
           <li><a href="#education" class="nav__link" data-nav="education">Education</a></li>
           <li><a href="#contact" class="nav__link" data-nav="contact">Contact</a></li>
@@ -1223,8 +1262,61 @@ body.cv-active #cvView { display: block; }
       </div>
     </section>
 
+    <!-- ============ PROJECT DEMOS ============ -->
+    <section class="section section--alt" id="demos">
+      <div class="container">
+        <p class="eyebrow">GET /projects/demos <span class="status status--ok">200 OK</span></p>
+        <h2 class="section__title reveal">Project Demos</h2>
+        <p class="section__subtitle reveal">
+          Short walkthrough videos introducing each project and its key features.
+        </p>
+
+        <div class="demo-grid">
+
+          <!-- Demo 1: CogniFund -->
+          <article class="demo-card reveal">
+            <div class="demo-card__media">
+              <video controls preload="metadata" playsinline poster="assets/videos/CogniFund_poster.jpg">
+                <source src="assets/videos/CogniFund_Demo.mp4" type="video/mp4">
+                Your browser does not support embedded video. <a href="assets/videos/CogniFund_Demo.mp4">Download the CogniFund demo</a>.
+              </video>
+            </div>
+            <div class="demo-card__body">
+              <h3>CogniFund — Multi-Tenant Fundraising Platform</h3>
+              <p class="project-card__desc">
+                Walkthrough of the donation and fundraising platform for masjids and nonprofits: campaigns, one-time and recurring giving, and instant receipts.
+              </p>
+              <ul class="tag-list tag-list--tech">
+                <li>Django DRF</li><li>React</li><li>Django Channels</li><li>Celery</li><li>Redis</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Demo 2: Lumi-So -->
+          <article class="demo-card reveal">
+            <div class="demo-card__media">
+              <video controls preload="metadata" playsinline poster="assets/videos/LumiSo_poster.jpg">
+                <source src="assets/videos/LumiSo_Demo.mp4" type="video/mp4">
+                Your browser does not support embedded video. <a href="assets/videos/LumiSo_Demo.mp4">Download the Lumi-So demo</a>.
+              </video>
+            </div>
+            <div class="demo-card__body">
+              <h3>Lumi-So — Django E-Commerce Platform</h3>
+              <p class="project-card__desc">
+                Walkthrough of the fashion storefront: product browsing, search, cart and checkout flow.
+              </p>
+              <ul class="tag-list tag-list--tech">
+                <li>Python</li><li>Django</li><li>JazzCash</li><li>SQL</li>
+              </ul>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
     <!-- ============ EXPERIENCE ============ -->
-    <section class="section section--alt" id="experience">
+    <section class="section" id="experience">
       <div class="container">
         <p class="eyebrow">GET /experience <span class="status status--ok">200 OK</span></p>
         <h2 class="section__title reveal">Experience</h2>
@@ -1251,7 +1343,7 @@ body.cv-active #cvView { display: block; }
     </section>
 
     <!-- ============ EDUCATION & CERTIFICATIONS ============ -->
-    <section class="section" id="education">
+    <section class="section section--alt" id="education">
       <div class="container">
         <p class="eyebrow">GET /education <span class="status status--ok">200 OK</span></p>
         <h2 class="section__title reveal">Education &amp; Certifications</h2>
@@ -1283,7 +1375,7 @@ body.cv-active #cvView { display: block; }
     </section>
 
     <!-- ============ CONTACT ============ -->
-    <section class="section section--alt" id="contact">
+    <section class="section" id="contact">
       <div class="container">
         <p class="eyebrow">POST /contact <span class="status status--ok">201 Created</span></p>
         <h2 class="section__title reveal">Get In Touch</h2>
@@ -1705,6 +1797,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     backToTop.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+    });
+  });
+
+  /* 8b. Demo videos — only one plays at a time */
+  safeInit('demo videos', () => {
+    const videos = document.querySelectorAll('.demo-card video');
+    if (!videos.length) return;
+
+    videos.forEach((video) => {
+      video.addEventListener('play', () => {
+        videos.forEach((other) => { if (other !== video) other.pause(); });
+      });
     });
   });
 

@@ -35,7 +35,7 @@
     },
     "knowsAbout": [
       "Python", "JavaScript", "SQL", "Django", "Django REST Framework", "Django Channels",
-      "REST API Design", "WebSockets", "Celery", "Redis", "React 18", "Vite", "Tailwind CSS",
+      "REST API Design", "WebSockets", "Celery", "Redis", "React 18", "TypeScript", "Vite", "Tailwind CSS", "Playwright",
       "Retrieval-Augmented Generation", "Ollama", "FAISS", "ChromaDB", "Vector Embeddings",
       "Pydantic", "PostgreSQL", "SQLite", "Multi-tenant SaaS Architecture", "RBAC", "Git", "Linux"
     ]
@@ -1057,7 +1057,7 @@ body.cv-active #cvView { display: block; }
         <div class="about__grid">
           <div class="about__text reveal">
             <p>
-              I am an AI-focused Full-Stack Developer specializing in Django REST Framework, React, and production RAG/LLM systems. I have built and shipped a 15-app multi-tenant SaaS platform (CogniFund) covering real-time features, async task processing, and role-based security, alongside an AI-graded interview-practice platform powered by local LLMs (Ollama).
+              I am an AI-focused Full-Stack Developer specializing in Django REST Framework, React, and production RAG/LLM systems. I have built and shipped a 15-app multi-tenant SaaS platform (CogniFund) covering real-time features, async task processing, and role-based security, alongside local-LLM (Ollama) projects: an AI-graded interview-practice platform and an AI job-search agent.
             </p>
             <p>
               I am comfortable owning a feature end-to-end — from data model design through REST APIs to deployed UIs — with a strong focus on connecting AI models to reliable, production-ready backend systems.
@@ -1123,7 +1123,7 @@ body.cv-active #cvView { display: block; }
               <h3>Frontend</h3>
             </div>
             <ul class="tag-list">
-              <li>React 18</li><li>Vite</li><li>Tailwind CSS</li>
+              <li>React 18</li><li>TypeScript</li><li>Vite</li><li>Tailwind CSS</li>
             </ul>
           </div>
 
@@ -1163,7 +1163,7 @@ body.cv-active #cvView { display: block; }
             <ul class="tag-list">
               <li>Multi-tenant SaaS Architecture</li><li>Role-Based Access Control (RBAC)</li>
               <li>Encrypted Credential Storage</li><li>Audit Logging</li><li>Git &amp; GitHub</li>
-              <li>Stripe Billing Integration</li><li>Agile / Iterative Development</li><li>Linux (Ubuntu)</li>
+              <li>Stripe Billing Integration</li><li>Playwright (Browser Automation)</li><li>Agile / Iterative Development</li><li>Linux (Ubuntu)</li>
             </ul>
           </div>
 
@@ -1204,6 +1204,31 @@ body.cv-active #cvView { display: block; }
             <ul class="tag-list tag-list--tech">
               <li>Python</li><li>Django DRF</li><li>React</li><li>Ollama (Qwen 7B)</li><li>Pydantic</li><li>PostgreSQL</li><li>Celery</li><li>Redis</li><li>Stripe</li>
             </ul>
+          </article>
+
+          <!-- Project: JobAgent -->
+          <article class="project-card reveal" data-category="featured ai fullstack">
+            <div class="project-card__head">
+              <span class="badge badge--featured">Featured Project</span>
+              <h3>JobAgent — AI Job-Search &amp; Application Assistant</h3>
+            </div>
+            <p class="project-card__desc">
+              AI agent that finds relevant jobs, scores each one against your real experience, and drafts a tailored CV and cover letter for the ones worth applying to, running on a local LLM via Ollama.
+            </p>
+            <ul class="feature-list">
+              <li>Job discovery from ~30 company boards via Greenhouse &amp; Lever public APIs</li>
+              <li>Deterministic, explainable match scoring plus eligibility checks and a ranked daily shortlist</li>
+              <li>Evidence-first CV &amp; cover letter generation using embeddings + FAISS retrieval over the profile</li>
+              <li>Pydantic schema validation on every AI response; Celery &amp; Redis background pipeline</li>
+              <li>Kanban application tracking and Playwright form filling that never submits without confirmation</li>
+            </ul>
+            <ul class="tag-list tag-list--tech">
+              <li>Python</li><li>Django DRF</li><li>React</li><li>TypeScript</li><li>Ollama (Qwen2.5 7B)</li><li>FAISS</li><li>Pydantic</li><li>PostgreSQL</li><li>Celery</li><li>Redis</li><li>Playwright</li>
+            </ul>
+            <div class="project-card__links">
+              <a href="https://github.com/furqann76/JobAgent" class="link link--live" target="_blank" rel="noopener noreferrer">View on GitHub &rarr;</a>
+              <a href="#demos" class="link link--live">Watch demo &rarr;</a>
+            </div>
           </article>
 
           <!-- Project 2: Embeddable Multi-Tenant RAG Chatbot Widget -->
@@ -1273,7 +1298,26 @@ body.cv-active #cvView { display: block; }
 
         <div class="demo-grid">
 
-          <!-- Demo 1: CogniFund -->
+          <!-- Demo: SkillDrill -->
+          <article class="demo-card reveal">
+            <div class="demo-card__media">
+              <video controls preload="metadata" playsinline poster="assets/videos/SkillDrill_poster.jpg">
+                <source src="assets/videos/SkillDrill_Demo.mp4" type="video/mp4">
+                Your browser does not support embedded video. <a href="assets/videos/SkillDrill_Demo.mp4">Download the SkillDrill demo</a>.
+              </video>
+            </div>
+            <div class="demo-card__body">
+              <h3>SkillDrill — AI-Graded Interview Practice</h3>
+              <p class="project-card__desc">
+                Walkthrough of the local-first interview practice platform: choosing a topic and difficulty, answering AI-generated questions with instant feedback, and tracking progress by topic.
+              </p>
+              <ul class="tag-list tag-list--tech">
+                <li>Django DRF</li><li>React</li><li>Ollama</li><li>Pydantic</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Demo: CogniFund -->
           <article class="demo-card reveal">
             <div class="demo-card__media">
               <video controls preload="metadata" playsinline poster="assets/videos/CogniFund_poster.jpg">
@@ -1292,7 +1336,26 @@ body.cv-active #cvView { display: block; }
             </div>
           </article>
 
-          <!-- Demo 2: Lumi-So -->
+          <!-- Demo: JobAgent -->
+          <article class="demo-card reveal">
+            <div class="demo-card__media">
+              <video controls preload="metadata" playsinline poster="assets/videos/JobAgent_poster.jpg">
+                <source src="assets/videos/JobAgent_Demo.mp4" type="video/mp4">
+                Your browser does not support embedded video. <a href="assets/videos/JobAgent_Demo.mp4">Download the JobAgent demo</a>.
+              </video>
+            </div>
+            <div class="demo-card__body">
+              <h3>JobAgent — AI Job-Search &amp; Application Assistant</h3>
+              <p class="project-card__desc">
+                Walkthrough of the job-search assistant running on a local LLM: AI job analysis, resume matching with skill gaps, one-click tailored CVs and cover letters, and an application tracking board.
+              </p>
+              <ul class="tag-list tag-list--tech">
+                <li>Django DRF</li><li>React</li><li>Ollama</li><li>Celery</li><li>PostgreSQL</li><li>FAISS</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Demo: Lumi-So -->
           <article class="demo-card reveal">
             <div class="demo-card__media">
               <video controls preload="metadata" playsinline poster="assets/videos/LumiSo_poster.jpg">
@@ -1471,7 +1534,7 @@ body.cv-active #cvView { display: block; }
       <section class="cv-section">
         <h2>Professional Summary</h2>
         <p class="cv-summary">
-          AI-focused Full-Stack Developer specializing in Django REST Framework, React, and production RAG/LLM systems. Built and shipped a 15-app multi-tenant SaaS platform (CogniFund) covering real-time features, async task processing, and role-based security, alongside an AI-graded interview-practice platform powered by local LLMs (Ollama). Comfortable owning a feature from data model through API to deployed UI, with a growing focus on connecting AI models to reliable, production-ready backend systems.
+          AI-focused Full-Stack Developer specializing in Django REST Framework, React, and production RAG/LLM systems. Built and shipped a 15-app multi-tenant SaaS platform (CogniFund) covering real-time features, async task processing, and role-based security, alongside local-LLM (Ollama) projects: an AI-graded interview-practice platform and an AI job-search agent. Comfortable owning a feature from data model through API to deployed UI, with a growing focus on connecting AI models to reliable, production-ready backend systems.
         </p>
       </section>
 
@@ -1479,11 +1542,11 @@ body.cv-active #cvView { display: block; }
         <h2>Skills</h2>
         <div class="skill-row"><span class="label">Languages</span><span class="value">Python, JavaScript, SQL</span></div>
         <div class="skill-row"><span class="label">Backend &amp; APIs</span><span class="value">Django, Django REST Framework (DRF), Django Channels, REST API design, WebSockets, Celery, Redis</span></div>
-        <div class="skill-row"><span class="label">Frontend</span><span class="value">React 18, Vite, Tailwind CSS</span></div>
+        <div class="skill-row"><span class="label">Frontend</span><span class="value">React 18, TypeScript, Vite, Tailwind CSS</span></div>
         <div class="skill-row"><span class="label">AI / RAG / LLMOps</span><span class="value">Retrieval-Augmented Generation (RAG), Ollama (local LLM serving), FAISS, ChromaDB, vector embeddings, Pydantic output validation, prompt/response pipelines</span></div>
         <div class="skill-row"><span class="label">Databases</span><span class="value">PostgreSQL, SQLite</span></div>
         <div class="skill-row"><span class="label">Architecture &amp; Sec</span><span class="value">Multi-tenant SaaS architecture, role-based access control (RBAC), encrypted credential storage, audit logging</span></div>
-        <div class="skill-row"><span class="label">Tools &amp; Practices</span><span class="value">Git, GitHub, Stripe billing integration, Agile/iterative development, Linux (Ubuntu)</span></div>
+        <div class="skill-row"><span class="label">Tools &amp; Practices</span><span class="value">Git, GitHub, Stripe billing integration, Playwright browser automation, Agile/iterative development, Linux (Ubuntu)</span></div>
       </section>
 
       <section class="cv-section">
@@ -1518,6 +1581,20 @@ body.cv-active #cvView { display: block; }
             <li>Architected Celery/Redis-based background job processing for asynchronous question generation.</li>
             <li>Building a three-tier Stripe subscription system (Free/Basic/Pro) with server-side entitlement enforcement.</li>
           </ul>
+        </div>
+
+        <div class="cv-entry">
+          <div class="cv-entry__head">
+            <span class="cv-entry__title">JobAgent — AI Job-Search &amp; Application Assistant <span class="badge-inline">Personal Project</span></span>
+          </div>
+          <ul>
+            <li>Built an AI agent that discovers jobs from ~30 company boards (Greenhouse and Lever APIs), scores each against the user's profile, and drafts tailored CVs and cover letters using a local Qwen2.5 7B model via Ollama.</li>
+            <li>Designed deterministic, explainable match scoring and eligibility checks that produce a ranked daily shortlist.</li>
+            <li>Implemented evidence-first document generation with embeddings and FAISS retrieval, plus Pydantic schema validation on every AI response.</li>
+            <li>Built a Celery/Redis pipeline over Django REST Framework and PostgreSQL, with a React 19 + TypeScript frontend.</li>
+            <li>Added Kanban application tracking and Playwright-based form filling that requires explicit user confirmation before submitting.</li>
+          </ul>
+          <p class="cv-entry__tech">github.com/furqann76/JobAgent</p>
         </div>
 
         <div class="cv-entry">
